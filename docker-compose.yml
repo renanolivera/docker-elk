@@ -1,9 +1,11 @@
-version: "2"
+version: "2.2"
 services:
   elasticsearch:
     build: elasticsearch/
     container_name: elasticsearch
     environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
@@ -39,7 +41,7 @@ services:
       - elk
     depends_on:
       - elasticsearch
-  
+
   filebeat:
     build: filebeat/
     container_name: filebeat

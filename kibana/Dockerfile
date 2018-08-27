@@ -1,2 +1,1 @@
-FROM docker.elastic.co/kibana/kibana:6.0.0
-RUN bin/kibana-plugin remove x-pack
+FROM docker.elastic.co/kibana/kibana:6.4.0
